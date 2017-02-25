@@ -14,11 +14,13 @@ class AisleTest {
     public void wrongAisleNameTest() {
         String aisleName = null;
         Aisle aisle;
+        boolean test = false;
         try {
             aisle = new Aisle(aisleName);
         } catch (NullPointerException e) {
-            Assertions.assertTrue(true);
+            Assertions.assertTrue(test);
         }
+        Assertions.assertTrue(test);
     }
 
     @Test
@@ -38,7 +40,18 @@ class AisleTest {
     public void aisleAddRacksTest() {
         Aisle aisle = new Aisle("Aisle");
         Rack rack = new Rack("Rack 1");
-        aisle.addSection(rack);
+        aisle.addRack(rack);
+        Assertions.assertTrue(aisle.getRack().length == 1);
+    }
+
+    @Test
+    public void aisleRemoveRackTest() {
+        Aisle aisle = new Aisle("Aisle");
+        Rack rack0 = new Rack("Rack 1");
+        Rack rack1 = new Rack("Rack 2");
+        aisle.addRack(rack0);
+        aisle.addRack(rack1);
+        aisle.removeRack(rack0);
         Assertions.assertTrue(aisle.getRack().length == 1);
     }
 
@@ -46,7 +59,7 @@ class AisleTest {
     public void aisleHasRacks() {
         Aisle aisle = new Aisle("Aisle");
         Rack rack = new Rack("Rack 1");
-        aisle.addSection(rack);
+        aisle.addRack(rack);
         Assertions.assertTrue(aisle.hasRacks());
     }
 }

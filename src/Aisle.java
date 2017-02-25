@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Aisle {
-
     private String aisleName;
     private ArrayList<Rack> racks;
 
@@ -22,9 +21,17 @@ public class Aisle {
         }
     }
 
-    public boolean addSection(Rack r) {
+    public boolean addRack(Rack r) {
         racks.add(r);
         return true;
+    }
+
+    public boolean removeRack(Rack r) {
+        if (racks.contains(r)) {
+            racks.remove(r);
+            return true;
+        }
+        return false;
     }
 
     public Rack[] getRack() {

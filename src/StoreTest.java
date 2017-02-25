@@ -13,10 +13,12 @@ class StoreTest {
 
     @Test
     public void storeInvalidNameTest() {
-        String name = null;
+        String name = "";
         Store store;
         try {
             store = new Store(name);
+            store.getStoreName();
+            Assertions.assertFalse(!store.getStoreName().equals(""));
 
         } catch (NullPointerException e) {
             Assertions.assertTrue(true);
